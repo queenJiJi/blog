@@ -8,10 +8,18 @@ export default function Header() {
         <h1 className="text-3xl font-bold">{"JiJi's Blog"}</h1>
       </Link>
       <nav className="flex gap-4">
-        <Link href="/"> home </Link>
-        <Link href="/about"> about </Link>
-        <Link href="/posts"> posts </Link>
-        <Link href="/contact"> contact </Link>
+        <Link href="/" className="hover:font-bold">
+          Home
+        </Link>
+        <Link href="/about" className="hover:font-bold">
+          About
+        </Link>
+        <Link href="/posts" className="hover:font-bold">
+          Posts
+        </Link>
+        <Link href="/contact" className="hover:font-bold">
+          Contact
+        </Link>
       </nav>
     </header>
   );
