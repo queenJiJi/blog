@@ -10,7 +10,7 @@ export default function PostCard({
 }) {
   return (
     <Link href={`/posts/${path}`}>
-      <article className="rounded-md overflow-hidden shadow-lg">
+      <article className="rounded-md overflow-hidden shadow-md hover:shadow-xl">
         <Image
           className="w-full"
           src={`/images/posts/${path}.png`}
