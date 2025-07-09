@@ -12,12 +12,15 @@
     "next": "15.3.4",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "react-multi-carousel": "^2.8.6"
+    "react-markdown": "^10.1.0",
+    "react-multi-carousel": "^2.8.6",
+    "remark-gfm": "^4.0.1"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
     "@tailwindcss/postcss": "^4.1.11",
-    "@types/node": "^20",
+    "@tailwindcss/typography": "^0.5.16",
+    "@types/node": "^20.19.6",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "autoprefixer": "^10.4.21",
