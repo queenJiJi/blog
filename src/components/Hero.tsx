@@ -1,11 +1,19 @@
+"use client";
+
 import React from "react";
 import Image from "next/image";
 import profileImage from "../../public/images/profile.png";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 export default function Hero() {
   return (
-    <section className="text-center">
+    <motion.section
+      className="text-center my-12"
+      initial={{ opacity: 0, y: -30 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8 }}
+    >
       <Image
         src={profileImage}
         alt="Picture of the author"
@@ -20,6 +28,6 @@ export default function Hero() {
           Contact Me
         </button>
       </Link>
-    </section>
+    </motion.section>
   );
 }
