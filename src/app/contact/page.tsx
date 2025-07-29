@@ -17,9 +17,10 @@ const LINKS = [
 
 export default function Contactpage() {
   return (
-    <section className="flex flex-col px-4 justify-center items-center lg:items-start lg:flex-row lg:justify-around lg:mt-10">
+    // <section className="flex flex-col px-4 justify-center items-center lg:items-start lg:flex-row lg:justify-around lg:mt-10">
+    <section className="flex flex-col px-4 justify-center items-center lg:items-start lg:flex-row lg:gap-10 lg:mt-10">
       <article className="flex flex-col">
-        <h1 className="text-4xl font-extrabold">
+        <h1 className="text-4xl font-extrabold mb-6">
           Get In Touch<span className="text-4xl text-pink-500">.</span>
         </h1>
         <article className="text-base md:text-lg mb-3">
