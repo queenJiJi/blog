@@ -1,6 +1,8 @@
 "use client";
 
+import useModal from "@/app/hooks/useModal";
 import React, { ChangeEvent, useState } from "react";
+import AlertModal from "./AlertModal";
 
 type Form = {
   name: string;
@@ -15,6 +17,23 @@ export default function ContanctForm() {
     message: "",
   });
 
+  const { isOpen, open, close } = useModal();
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const handleCancel = () => {
+    // 취소버튼 눌렀을 시
+    setIsSubmitted(false);
+    close();
+  };
+
+  const handleConfirm = () => {
+    // 확인버튼 눌렀을 시
+    console.log("Form submitted:", form);
+    setForm({ name: "", email: "", message: "" });
+    setIsSubmitted(false);
+    close();
+  };
+
   const onChangeHandler = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
@@ -23,11 +42,10 @@ export default function ContanctForm() {
   };
 
   const submitHandler = (e: React.FormEvent) => {
+    // 전송버튼 눌렀을 시
     e.preventDefault();
-    // Here you would typically handle the form submission, e.g., send the data to a server
-    console.log("Form submitted:", form);
-    // Reset the form after submission
-    setForm({ name: "", email: "", message: "" });
+    setIsSubmitted(true);
+    open(); // 확인 모달 열기
   };
 
   return (
@@ -67,11 +85,18 @@ export default function ContanctForm() {
         />
         <button
           type="submit"
+          onClick={open}
           className="bg-pink-500 text-white font-bold py-3 rounded-lg hover:bg-pink-600 transition"
         >
           전송
         </button>
       </form>
+      <AlertModal
+        isOpen={isOpen}
+        onCancel={handleCancel}
+        onConfirm={handleConfirm}
+        message={"전송을 완료하시겠습니까?"}
+      />
     </div>
   );
 }
