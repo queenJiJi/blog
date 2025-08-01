@@ -1,7 +1,7 @@
 "use client";
 
 import useModal from "@/app/hooks/useModal";
-import React, { ChangeEvent, useState } from "react";
+import React, { useState } from "react";
 import AlertModal from "./AlertModal";
 import { useForm } from "react-hook-form";
 
@@ -12,12 +12,6 @@ type Form = {
 };
 
 export default function ContanctForm() {
-  // const [form, setForm] = useState<Form>({
-  //   name: "",
-  //   email: "",
-  //   message: "",
-  // });
-
   const { isOpen, open, close } = useModal();
   const [pendingData, setPendingData] = useState<Form | null>(null);
   const {
@@ -25,9 +19,7 @@ export default function ContanctForm() {
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm<Form>({
-    // defaultValues: form,
-  });
+  } = useForm<Form>({});
 
   // 취소버튼 눌렀을 시
   const handleCancel = () => {
@@ -62,11 +54,7 @@ export default function ContanctForm() {
           {...register("name", { required: "이름을 입력해주세요. " })}
           type="text"
           id="name"
-          // name="name"
-          // required
           autoFocus
-          // value={form.name}
-          // onChange={onChangeHandler}
           className="p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-300"
         />
         {errors.name && (
@@ -76,10 +64,6 @@ export default function ContanctForm() {
         <input
           type="email"
           id="email"
-          // name="email"
-          // required
-          // value={form.email}
-          // onChange={onChangeHandler}
           {...register("email", {
             required: "이메일을 입력해주세요.",
             pattern: {
@@ -98,10 +82,6 @@ export default function ContanctForm() {
           rows={10}
           id="message"
           {...register("message", { required: "문의 내용을 입력해주세요." })}
-          // name="message"
-          // required
-          // value={form.message}
-          // onChange={onChangeHandler}
           className="p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-300"
         />
         {errors.message && (
@@ -109,7 +89,6 @@ export default function ContanctForm() {
         )}
         <button
           type="submit"
-          // onClick={open}
           className="bg-pink-500 text-white font-bold py-3 rounded-lg hover:bg-pink-600 transition"
         >
           전송
