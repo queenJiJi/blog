@@ -34,17 +34,34 @@ export default function ContactForm() {
     }
   }, [submitted]);
 
+  // 슬랙 전달 로직 구현
+  const sendToSlack = async (data: Form) => {
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+
+      if (!res.ok) throw new Error("Slack 전송 실패");
+    } catch (error) {
+      console.error("Slack API 에러:", error);
+    }
+  };
+
   const handleCancel = () => {
     close();
     setPendingData(null);
   };
 
-  const handleConfirm = () => {
+  const handleConfirm = async () => {
     if (!pendingData) return;
     console.log("Form submitted:", pendingData);
-    setSubmitted(true);
-    reset();
-    close();
+    await sendToSlack(pendingData); // Slack 전송
+
+    setSubmitted(true); // 제출 애니메이션
+    reset(); // 폼 초기화
+    close(); // 모달 닫기
     setPendingData(null);
   };
 
