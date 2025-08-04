@@ -8,7 +8,7 @@ type Props = {
 
 export default function LottieContainer({ file }: Props) {
   return (
-    <section className="w-full md:max-w-[350px] lg:max-w-[500px]">
+    <section className="hidden md:block w-full md:max-w-[350px] lg:max-w-[500px]">
       <Lottie
         animationData={file}
         autoplay={true}
